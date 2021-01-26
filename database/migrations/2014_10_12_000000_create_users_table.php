@@ -14,13 +14,19 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('seg_users', function (Blueprint $table) {
+            // Aca estaran los datos de usuario y clientes
             $table->id();
             $table->string('usuario',30)->unique();
+            $table->boolean('es_cliente')->default(true);
             $table->string('nombre', 30);
             $table->string('apellidos', 30);
             $table->string('telefono', 30)->nullable();
             $table->string('email')->unique();
             $table->boolean('estado');
+            $table->boolean('sexo')->nullable();
+            $table->string('foto',300);
+            $table->smallInteger('tipo')->default(1);
+            $table->smallInteger('edad')->nullable();
             $table->string('password', 100);
             
             $table->dateTime('fecha_alta')->nullable();
